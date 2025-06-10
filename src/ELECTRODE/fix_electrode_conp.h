@@ -12,7 +12,7 @@
 ------------------------------------------------------------------------- */
 
 /* ----------------------------------------------------------------------
-   Contributing authors: Ludwig Ahrens-Iwers (TUHH), Shern Tee (UQ), Robert Meißner (TUHH)
+   Contributing authors: Ludwig Ahrens-Iwers (TUHH), Shern Tee (UQ), Robert Meissner (TUHH)
 ------------------------------------------------------------------------- */
 
 #ifdef FIX_CLASS
@@ -72,7 +72,7 @@ class FixElectrodeConp : public Fix {
   enum class Algo { MATRIX_INV, MATRIX_CG, CG };
   enum class VarStyle { CONST, EQUAL, UNSET };
   virtual void update_psi();
-  virtual void pre_update(){};
+  virtual void pre_update() {};
   virtual void recompute_potential(std::vector<double>, std::vector<double>){};
   virtual std::vector<double> constraint_projection(std::vector<double>);
   virtual std::vector<double> constraint_correction(std::vector<double>);
@@ -98,6 +98,7 @@ class FixElectrodeConp : public Fix {
   double thermo_temp, thermo_time;                       // used by electrode/thermo only
   int thermo_init;                                       // initializer for rng in electrode/thermo
   bool ffield;                                           // possibly tweak electrode/conq's version
+  bool gauss_fflag;                                      // flag for modifying forces in gausscorr
   std::string fixname;    // used by electrode/ffield to set up internal efield
   bool intelflag;
   inline virtual void intel_pack_buffers() {}
